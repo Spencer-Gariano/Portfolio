@@ -1,3 +1,17 @@
+# Portfolio
+Repository for Portfolio and some embedded examples
+
+### Project will be a Typescript project created via Vite.
+#### Project includes
+- Jotai for atom state management
+- Tailwind CSS for styling
+- MUI and shadcn/ui for most basic UI components
+- Tanstack Query for data fetch
+- Tanstack Table for datagrids
+- Tanstack Form or React Hook Form for any form controls
+
+
+### Template additions
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
@@ -71,3 +85,4 @@ export default defineConfig([
   },
 ])
 ```
+
