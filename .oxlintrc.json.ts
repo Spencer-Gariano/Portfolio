@@ -7,4 +7,5 @@ export default defineConfig({
   rules: {
     'eslint/no-unused-vars': 'error',
   },
+  ignorePatterns: ['src/routes/**'],
 });

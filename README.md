@@ -9,6 +9,7 @@ Repository for Portfolio and some embedded examples
 - oxc for linting and formatting
 - Jotai for atom state management
 - Tailwind CSS for styling
+- Tanstack Router for app routing
 - MUI and shadcn/ui for most basic UI components
 - Tanstack Query for data fetch
 - Tanstack Table for datagrids

@@ -13,10 +13,21 @@ export default defineConfig([
       js.configs.recommended,
       tseslint.configs.recommended,
       reactHooks.configs.flat.recommended,
-      reactRefresh.configs.vite,
     ],
     languageOptions: {
       globals: globals.browser,
+    },
+  },
+  // Apply react-refresh ONLY outside routes
+  {
+    files: ['**/*.{ts,tsx}', '!**/routes/**/*.{ts,tsx}'],
+    extends: [reactRefresh.configs.vite],
+  },
+  // Routes: explicitly clean override
+  {
+    files: ['**/routes/**/*.{ts,tsx}'],
+    rules: {
+      'react-refresh/only-export-components': 'off',
     },
   },
 ]);
