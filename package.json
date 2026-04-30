@@ -1,15 +1,21 @@
 {
   "name": "portfolio",
-  "private": true,
   "version": "0.0.0",
+  "private": true,
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "fmt": "oxfmt",
+    "fmt:check": "oxfmt --check",
+    "lint": "oxlint . && eslint .",
+    "lint:fast": "oxlint .",
+    "lint:fix": "oxlint --fix"
   },
   "dependencies": {
+    "oxfmt": "^0.47.0",
+    "oxlint": "^1.62.0",
     "react": "^19.2.5",
     "react-dom": "^19.2.5"
   },
