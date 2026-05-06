@@ -5,9 +5,13 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* =========================
+/*
+Used AI to help automate the initial global css to make it compatible with Tailwind/Shadcn preset that I created
+ =========================
    THEME TOKENS (LIGHT)
-   ========================= */
+   ========================= 
+   
+*/
 :root {
   --background: oklch(1 0 0);
   --foreground: oklch(0.147 0.004 49.3);
