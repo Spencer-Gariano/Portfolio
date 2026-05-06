@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <div className='mx-auto flex max-w-5xl items-center justify-between px-4 py-8'>
+    <div className='mx-auto flex max-w-5xl items-center justify-between px-4 py-4'>
       {/* Identity */}
       <p className='text-muted-foreground text-sm'>Spencer Gariano</p>
       {/* Links */}
