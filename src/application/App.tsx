@@ -1,9 +1,13 @@
-import './App.css';
-import { router } from './routes/routes';
+import { router } from '@/application/routes/Routes';
 import { RouterProvider } from '@tanstack/react-router';
+import { ThemeProvider } from './providers/theme/ThemeProvider';
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <ThemeProvider>
+      <RouterProvider router={router} />
+    </ThemeProvider>
+  );
 }
 
 export default App;
