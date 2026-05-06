@@ -1,9 +1,7 @@
-import { createRoute } from '@tanstack/react-router';
-import { rootRoute } from './Root';
 import { HighlightCard } from '@/features/highlight-card/HighlightCard';
 
 //Used below to assign this to the index route
-const IndexComponent = () => {
+const IndexPage = () => {
   return (
     //Home page
     <div className='mx-auto max-w-5xl space-y-12 px-4 py-12'>
@@ -64,9 +62,4 @@ const IndexComponent = () => {
   );
 };
 
-//The index route to be used in Routes.tsx
-export const indexRoute = createRoute({
-  getParentRoute: () => rootRoute,
-  path: '/',
-  component: IndexComponent,
-});
+export { IndexPage };

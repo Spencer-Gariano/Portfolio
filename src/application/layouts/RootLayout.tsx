@@ -1,9 +1,9 @@
 import { Footer } from '@/features/footer/Footer';
 import { NavigationBar } from '@/features/navigation/NavigationBar';
 import { ThemeToggle } from '@/features/theme-toggle/ThemeToggle';
-import { createRootRoute, Outlet } from '@tanstack/react-router';
+import { Outlet } from '@tanstack/react-router';
 
-const RootComponent = () => {
+const RootLayout = () => {
   return (
     <div className='bg-background text-foreground flex min-h-screen flex-col'>
       <header className='border-border bg-background/80 sticky top-0 z-50 border-b backdrop-blur'>
@@ -25,6 +25,4 @@ const RootComponent = () => {
   );
 };
 
-export const rootRoute = createRootRoute({
-  component: RootComponent,
-});
+export { RootLayout };
