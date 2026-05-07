@@ -3,7 +3,7 @@ import {
   NavigationMenuLink,
   navigationMenuTriggerStyle,
 } from '@/components/ui/NavigationMenu';
-import { Link } from '@tanstack/react-router';
+import { NavigationLink } from './NavigationLink';
 
 export interface INavigationItemLinkProps {
   name: string;
@@ -14,7 +14,7 @@ const NavigationItemLink = (props: INavigationItemLinkProps) => {
   return (
     <NavigationMenuItem>
       <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-        <Link to={props.link}>{props.name}</Link>
+        <NavigationLink to={props.link}>{props.name}</NavigationLink>
       </NavigationMenuLink>
     </NavigationMenuItem>
   );

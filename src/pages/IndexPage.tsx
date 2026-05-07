@@ -4,7 +4,7 @@ import { HighlightCard } from '@/features/highlight-card/HighlightCard';
 const IndexPage = () => {
   return (
     //Home page
-    <div className='mx-auto max-w-5xl space-y-12 px-4 py-12'>
+    <div className='space-y-8'>
       {/* Intro section for home page */}
       <section className='space-y-3'>
         <h1 className='text-4xl font-bold'>Spencer Gariano</h1>
@@ -19,15 +19,15 @@ const IndexPage = () => {
       */}
       <section className='grid gap-6 md:grid-cols-2'>
         <HighlightCard
+          title={'Engineering Highlights'}
+          content={`Refactored a production UI codebase to resolve systemic rendering bugs introduced by feature flags and improve component architecture. 
+            Contributed to scaling authentication systems through sharding strategies in a distributed backend environment.`}
+        />
+        <HighlightCard
           title={'TanStack Table Playground'}
           content={
             'Interactive data grid exploring sorting, filtering, and column state management, with data sourced from a backend API and NoSQL database to simulate real-world server-driven table behavior.'
           }
-        />
-        <HighlightCard
-          title={'Engineering Highlights'}
-          content={`Refactored a production UI codebase to resolve systemic rendering bugs introduced by feature flags and improve component architecture. 
-            Contributed to scaling authentication systems through sharding strategies in a distributed backend environment.`}
         />
         <HighlightCard
           title='Portfolio Architecture'
