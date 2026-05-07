@@ -4,7 +4,7 @@ import { HighlightCard } from '@/features/highlight-card/HighlightCard';
 const IndexPage = () => {
   return (
     //Home page
-    <div className='mx-auto max-w-5xl space-y-12 px-4 py-12'>
+    <div className='space-y-8'>
       {/* Intro section for home page */}
       <section className='space-y-3'>
         <h1 className='text-4xl font-bold'>Spencer Gariano</h1>
