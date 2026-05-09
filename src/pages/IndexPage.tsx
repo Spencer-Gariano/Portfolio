@@ -5,7 +5,7 @@ const IndexPage = () => {
   return (
     //Home page
     <div className='space-y-8'>
-      {/* Intro section for home page */}
+      {/* Header for home page */}
       <section className='space-y-3'>
         <h1 className='text-4xl font-bold'>Spencer Gariano</h1>
         <p className='text-muted-foreground text-lg'>
