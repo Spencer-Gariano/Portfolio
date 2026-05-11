@@ -6,6 +6,10 @@ export default defineConfig({
   },
   rules: {
     'eslint/no-unused-vars': 'error',
+    'react/jsx-curly-brace-presence': [
+      'error',
+      { props: 'always', children: 'ignore', propElementValues: 'always' },
+    ],
   },
   ignorePatterns: ['src/routes/**'],
 });
