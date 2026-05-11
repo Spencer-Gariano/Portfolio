@@ -1,4 +1,5 @@
 import { HighlightCard } from '@/features/highlight-card/HighlightCard';
+import { HighlightLink } from '@/features/highlight-link/HighlightLink';
 
 //Used below to assign this to the index route
 const IndexPage = () => {
@@ -49,13 +50,13 @@ const IndexPage = () => {
         </p>
 
         <div className='flex gap-4 text-sm'>
-          <a href='mailto:srgariano@gmail.com'>Email</a>
-          <a href='https://github.com/Spencer-Gariano' target='_blank' rel='noreferrer'>
-            GitHub
-          </a>
-          <a href='https://linkedin.com/in/spencer-gariano-sde' target='_blank' rel='noreferrer'>
+          <HighlightLink href={'mailto:srgariano@gmail.com'}>Email</HighlightLink>
+          <HighlightLink href={'https://github.com/Spencer-Gariano'} newTab>
+            Github
+          </HighlightLink>
+          <HighlightLink href={'https://linkedin.com/in/spencer-gariano-sde'} newTab>
             LinkedIn
-          </a>
+          </HighlightLink>
         </div>
       </section>
     </div>
