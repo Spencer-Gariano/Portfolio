@@ -7,11 +7,11 @@ Repository for Portfolio and some embedded examples
 #### Project includes
 
 - oxc for linting and formatting
-- Jotai for atom state management
+- Jotai for atom state management as necessary
 - Tailwind CSS for styling
 - Tanstack Router for app routing
 - shadcn/ui for simple UI components
-- Tanstack Query for data fetch
+- Tanstack Query for data fetch as necessary
 - Tanstack Table for datagrids
 - Tanstack Form or React Hook Form for any form controls
 
