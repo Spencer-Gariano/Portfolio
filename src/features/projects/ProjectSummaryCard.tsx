@@ -8,6 +8,7 @@ import {
   CardTitle,
 } from '@/components/ui/Card';
 import { ProjectFooter } from './ProjectFooter';
+import type { ILink } from '@/types/types';
 
 export interface IProjectSummaryCardProps {
   title: string;
@@ -15,6 +16,7 @@ export interface IProjectSummaryCardProps {
   techStackTags: string[];
   highlights: string[];
   footer: string;
+  link?: ILink;
 }
 
 const ProjectSummaryCard = (props: IProjectSummaryCardProps) => {
@@ -42,8 +44,8 @@ const ProjectSummaryCard = (props: IProjectSummaryCardProps) => {
           </ul>
         </div>
       </CardContent>
-      <CardFooter className='px-4 py-3'>
-        <ProjectFooter type={props.footer} />
+      <CardFooter className='border-t px-4 py-3'>
+        <ProjectFooter type={props.footer} link={props.link} />
       </CardFooter>
     </Card>
   );

@@ -1,12 +1,12 @@
 import { ProjectSummaryCard } from '@/features/projects/ProjectSummaryCard';
 import { PageHeader } from './PageHeader';
-import type { IBriefProject, IProjectSummary } from '@/features/projects/types';
+import type { IFeaturedProject, IProject } from '@/features/projects/types';
 import { ProjectFooter } from '@/features/projects/ProjectFooter';
 import { BriefProjectCard } from '@/features/projects/BriefProjectCard';
 import { SectionTitle } from '@/features/section-title/SectionTitles';
 
 const ProjectsPage = () => {
-  const featuredProjects: IProjectSummary[] = [
+  const projects: IProject[] = [
     {
       title: 'Authentication Infrastructure Scaling',
       summary:
@@ -45,43 +45,38 @@ const ProjectsPage = () => {
       ],
       footer: 'Professional Work',
     },
-  ];
-
-  const secondaryProjects: IBriefProject[] = [
     {
       title: 'Portfolio Website',
       summary:
         'Designed and built a personal portfolio to showcase engineering projects, frontend systems thinking, and UI design work. Focused on clean structure, reusable components, and consistent visual hierarchy.',
       techStackTags: ['React', 'TypeScript', 'Tailwind CSS', 'UI Design'],
-      footer: (
-        <ProjectFooter
-          link={'https://github.com/Spencer-Gariano/Portfolio'}
-          title={'Github'}
-          type={'Personal Project'}
-        />
-      ),
+      footer: 'Personal Project',
+      link: { href: 'https://github.com/Spencer-Gariano/Portfolio', title: 'Github' },
     },
     {
       title: 'Sparring',
       summary:
         'Built a mobile app MVP that matches gym partners based on shared fitness goals. Focused on user onboarding, authentication flow, and location-based matching.',
       techStackTags: ['Flutter', 'Firebase', 'Location Services'],
-      footer: <ProjectFooter type={'Capstone Project'} />,
+      footer: 'Capstone Project',
     },
     {
       title: 'SubmittalXpress',
       summary:
         'Developed a web tool for construction teams to streamline document submission workflows. Included form generation, file uploads, and structured data handling for project submissions.',
       techStackTags: ['Java', 'File Uploads'],
-      footer: (
-        <ProjectFooter
-          link={'https://github.com/Spencer-Gariano/SubmittalXpress'}
-          title={'Github'}
-          type={'Capstone Project'}
-        />
-      ),
+      footer: 'Capstone Project',
+      link: { href: 'https://github.com/Spencer-Gariano/SubmittalXpress', title: 'Github' },
     },
   ];
+
+  const featuredProjects = projects.filter(
+    (project): project is IFeaturedProject => !!project.highlights?.length,
+  );
+
+  const secondaryProjects = projects.filter(
+    (project) => !project.highlights || project.highlights.length === 0,
+  );
 
   return (
     <div className='space-y-8'>
@@ -92,14 +87,14 @@ const ProjectsPage = () => {
       <section className='space-y-5'>
         <SectionTitle>Featured Work</SectionTitle>
         {featuredProjects.map((project) => (
-          <ProjectSummaryCard key={project.title} {...project} />
+          <ProjectSummaryCard {...project} key={project.title} />
         ))}
       </section>
       <section className='space-y-6'>
         <SectionTitle>Other Projects</SectionTitle>
         <div className='grid items-start gap-6 md:grid-cols-3'>
           {secondaryProjects.map((project) => (
-            <BriefProjectCard key={project.title} {...project} />
+            <BriefProjectCard {...project} key={project.title} />
           ))}
         </div>
       </section>

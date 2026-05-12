@@ -1,14 +1,14 @@
-export interface IProjectSummary {
+import type { ILink } from '@/types/types';
+
+export interface IProject {
   title: string;
   summary: string;
   techStackTags: string[];
-  highlights: string[];
+  highlights?: string[];
   footer: string;
+  link?: ILink;
 }
 
-export interface IBriefProject {
-  title: string;
-  summary: string;
-  techStackTags: string[];
-  footer: React.ReactNode;
+export interface IFeaturedProject extends IProject {
+  highlights: string[];
 }

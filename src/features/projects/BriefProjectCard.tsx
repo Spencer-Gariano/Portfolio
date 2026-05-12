@@ -1,11 +1,14 @@
 import { Badge } from '@/components/ui/Badge';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/Card';
+import { ProjectFooter } from './ProjectFooter';
+import type { ILink } from '@/types/types';
 
 export interface IBriefProjectCardProps {
   title: string;
   summary: string;
   techStackTags: string[];
-  footer: React.ReactNode;
+  footer: string;
+  link?: ILink;
 }
 
 const BriefProjectCard = (props: IBriefProjectCardProps) => {
@@ -22,7 +25,9 @@ const BriefProjectCard = (props: IBriefProjectCardProps) => {
           ))}
         </div>
       </CardContent>
-      <CardFooter className={'border-t px-4 py-3'}>{props.footer}</CardFooter>
+      <CardFooter className={'border-t px-4 py-3'}>
+        <ProjectFooter type={props.footer} link={props.link} />
+      </CardFooter>
     </Card>
   );
 };
