@@ -1,10 +1,10 @@
 import { createRoute } from '@tanstack/react-router';
 import { rootRoute } from './Root';
 import { IndexPage } from '@/pages/IndexPage';
-import { routes } from './Routes';
+import { routeIds } from './RouteIds';
 
 export const indexRoute = createRoute({
   getParentRoute: () => rootRoute,
-  path: routes.home.path,
+  path: routeIds.index,
   component: IndexPage,
 });

@@ -9,12 +9,11 @@ import {
 } from '@/components/ui/Sheet';
 import { Menu } from 'lucide-react';
 import { NavigationLink } from './NavigationLink';
-import { routes } from '@/application/routes/Routes';
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
+import { navigationArray } from './Navigation';
 
 const MobileNavigation = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const routesArray = useMemo(() => Object.values(routes), [routes]);
 
   return (
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
@@ -34,10 +33,10 @@ const MobileNavigation = () => {
           <SheetDescription>Navigate with the links here</SheetDescription>
         </SheetHeader>
         <nav className='gap-4mt-8 mt-8 flex flex-col gap-2'>
-          {routesArray.map((route) => {
+          {navigationArray.map((navItem) => {
             return (
-              <NavigationLink key={route.path} to={route.path} onClick={() => setIsOpen(false)}>
-                {route.title}
+              <NavigationLink key={navItem.to} to={navItem.to} onClick={() => setIsOpen(false)}>
+                {navItem.label}
               </NavigationLink>
             );
           })}

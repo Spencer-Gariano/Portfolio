@@ -1,10 +1,10 @@
 import { ProjectsPage } from '@/pages/ProjectsPage';
 import { createRoute } from '@tanstack/react-router';
 import { rootRoute } from './Root';
-import { routes } from './Routes';
+import { routeIds } from './RouteIds';
 
 export const projectsRoute = createRoute({
   getParentRoute: () => rootRoute,
-  path: routes.projects.path,
+  path: routeIds.projects,
   component: ProjectsPage,
 });
