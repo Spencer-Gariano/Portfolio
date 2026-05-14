@@ -1,6 +1,6 @@
 import { ProjectSummaryCard } from '@/features/projects/ProjectSummaryCard';
 import { PageHeader } from './PageHeader';
-import type { IFeaturedProject, IProject } from '@/features/projects/types';
+import type { IFeaturedProject, IProject } from '@/features/projects/Types_tmp';
 import { BriefProjectCard } from '@/features/projects/BriefProjectCard';
 import { SectionTitle } from '@/features/section-title/SectionTitles';
 

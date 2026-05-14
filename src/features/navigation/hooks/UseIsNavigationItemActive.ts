@@ -1,6 +1,6 @@
 import { useLocation } from '@tanstack/react-router';
 import { useMemo } from 'react';
-import type { INavigationItem } from '../types';
+import type { INavigationItem } from '../types_tmp';
 
 /**
  * Hook to determine when a Navigation route is active or not

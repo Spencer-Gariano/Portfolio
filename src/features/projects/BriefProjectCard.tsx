@@ -1,7 +1,7 @@
 import { Badge } from '@/components/ui/Badge';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/Card';
 import { ProjectFooter } from './ProjectFooter';
-import type { ILink } from '@/types/types';
+import type { ILink } from '@/types/Types_tmp';
 
 export interface IBriefProjectCardProps {
   title: string;

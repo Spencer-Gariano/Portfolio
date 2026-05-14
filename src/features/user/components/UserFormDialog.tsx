@@ -1,4 +1,4 @@
-import type { EditUserDialogProps, CreateUserDialogProps } from '../User';
+import type { EditUserDialogProps, CreateUserDialogProps } from '../Types';
 
 export type UserFormDialogProps = CreateUserDialogProps | EditUserDialogProps;
 

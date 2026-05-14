@@ -1,4 +1,4 @@
-import type { IUser } from '../User';
+import type { IUser } from '../Types';
 
 export interface IUserDeleteDialogProps {
   user: IUser;
