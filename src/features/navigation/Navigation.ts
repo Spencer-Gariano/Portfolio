@@ -1,5 +1,5 @@
 import { routeIds } from '@/application/routes/RouteIds';
-import type { INavigationItem } from './Types_tmp';
+import type { INavigationItem } from './Types';
 
 export const navigationArray: INavigationItem[] = [
   {

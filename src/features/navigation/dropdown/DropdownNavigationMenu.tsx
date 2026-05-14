@@ -1,4 +1,4 @@
-import type { INavigationItem } from '../types_tmp.ts';
+import type { INavigationItem } from '../Types.ts';
 import { NavigationMenuContent, NavigationMenuItem } from '@/components/ui/NavigationMenu';
 import { DropdownNavigationItemLink } from './DropdownNavigationItemLink.tsx';
 import { NavigationDropdownComboLink } from './NavigationDropdownComboLink.tsx';

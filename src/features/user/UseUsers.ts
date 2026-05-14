@@ -1,5 +1,3 @@
-import { useMemo } from 'react';
-import { mockUsers } from './Users.Mock';
 import type { IUser } from './Types';
 import { useQuery } from '@tanstack/react-query';
 import { UserQueryKeys } from './QueryKeys';

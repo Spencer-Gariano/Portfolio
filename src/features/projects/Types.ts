@@ -1,4 +1,4 @@
-import type { ILink } from '@/types/Types_tmp';
+import type { ILink } from '@/types/Types';
 
 export interface IProject {
   title: string;

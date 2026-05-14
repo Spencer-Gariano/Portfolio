@@ -1,6 +1,6 @@
 import { NavigationMenuTrigger } from '@/components/ui/NavigationMenu';
 import { NavigationItemLink } from '../NavigationItemLink';
-import type { INavigationItem } from '../Types_tmp';
+import type { INavigationItem } from '../Types';
 import { useIsNavigationItemActive } from '../hooks/UseIsNavigationItemActive';
 import clsx from 'clsx';
 import { ButtonGroup } from '@/components/ui/ButtonGroup';

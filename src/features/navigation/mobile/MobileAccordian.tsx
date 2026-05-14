@@ -1,5 +1,5 @@
 import { AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/Accordian';
-import type { INavigationItem } from '../types_tmp';
+import type { INavigationItem } from '../Types';
 import { NavigationLink } from '../NavigationLink';
 import clsx from 'clsx';
 import { useIsNavigationItemActive } from '../hooks/UseIsNavigationItemActive';
