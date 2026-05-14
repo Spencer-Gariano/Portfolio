@@ -3,5 +3,5 @@ export const routeIds = {
   about: '/about',
   projects: '/projects',
   playground: '/playground',
-  users: '/users',
+  playgroundUsers: '/playground/users',
 } as const;

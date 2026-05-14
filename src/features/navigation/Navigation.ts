@@ -20,7 +20,7 @@ export const navigationArray: INavigationItem[] = [
     children: [
       {
         label: 'Users',
-        to: routeIds.users,
+        to: routeIds.playgroundUsers,
       },
     ],
   },
