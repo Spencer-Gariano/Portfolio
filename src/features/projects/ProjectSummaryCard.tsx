@@ -8,7 +8,7 @@ import {
   CardTitle,
 } from '@/components/ui/Card';
 import { ProjectFooter } from './ProjectFooter';
-import type { ILink } from '@/types/types';
+import type { ILink } from '@/types/Types';
 
 export interface IProjectSummaryCardProps {
   title: string;

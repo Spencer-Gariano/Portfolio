@@ -1,4 +1,4 @@
-import type { IExperienceTimeline } from './types';
+import type { IExperienceTimeline } from './Types';
 
 export interface IExperienceTimelineProps {
   experiences: IExperienceTimeline[];

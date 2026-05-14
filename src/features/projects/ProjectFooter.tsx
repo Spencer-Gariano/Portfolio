@@ -1,4 +1,4 @@
-import type { ILink } from '@/types/types';
+import type { ILink } from '@/types/Types';
 import { HighlightLink } from '../highlight-link/HighlightLink';
 
 export interface IProjectFooterProps {

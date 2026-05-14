@@ -1,19 +1,27 @@
-import { NavigationMenu, NavigationMenuList } from '@/components/ui/NavigationMenu';
+import {
+  NavigationMenu,
+  NavigationMenuItem,
+  NavigationMenuList,
+} from '@/components/ui/NavigationMenu';
 import { NavigationItemLink } from './NavigationItemLink';
-import { routes } from '@/application/routes/Routes';
-import { MobileNavigation } from './MobileNavigation';
-import { useMemo } from 'react';
+import { MobileNavigation } from './mobile/MobileNavigation';
+import { navigationArray } from './Navigation';
+import { DropdownNavigationMenu } from './dropdown/DropdownNavigationMenu';
 
 const NavigationBar = () => {
-  const routesArray = useMemo(() => Object.values(routes), [routes]);
-
   return (
     <div>
       <NavigationMenu className='hidden md:flex'>
         <NavigationMenuList>
-          {routesArray.map((route) => (
-            <NavigationItemLink key={route.path} name={route.title} link={route.path} />
-          ))}
+          {navigationArray.map((navItem) => {
+            return navItem.children?.length ? (
+              <DropdownNavigationMenu key={navItem.to} navigationItem={navItem} />
+            ) : (
+              <NavigationMenuItem key={navItem.to}>
+                <NavigationItemLink name={navItem.label} link={navItem.to!} />
+              </NavigationMenuItem>
+            );
+          })}
         </NavigationMenuList>
       </NavigationMenu>
       <MobileNavigation />

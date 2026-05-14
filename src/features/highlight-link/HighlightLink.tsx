@@ -5,6 +5,11 @@ export interface IHighlightlinkProps extends PropsWithChildren {
   newTab?: boolean;
 }
 
+/**
+ * Used for external links that have styling to underline on hover and optionally open in new tab
+ *
+ * @param props - Props for HighlightLink
+ */
 const HighlightLink = (props: IHighlightlinkProps) => {
   return (
     <a
