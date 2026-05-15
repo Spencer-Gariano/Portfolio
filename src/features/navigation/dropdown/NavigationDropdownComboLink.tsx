@@ -3,8 +3,7 @@ import { NavigationItemLink } from '../NavigationItemLink';
 import type { INavigationItem } from '../Types';
 import { useIsNavigationItemActive } from '../hooks/UseIsNavigationItemActive';
 import clsx from 'clsx';
-import { ButtonGroup } from '@/components/ui/ButtonGroup';
-import { Separator } from '@/components/ui/Separator';
+import { ButtonGroup, ButtonGroupSeparator } from '@/components/ui/ButtonGroup';
 
 export interface INavigationDropdownComboLinkProps {
   navigationItem: INavigationItem;
@@ -16,7 +15,7 @@ const NavigationDropdownComboLink = (props: INavigationDropdownComboLinkProps) =
   return (
     <ButtonGroup className={'flex items-center'}>
       <NavigationItemLink name={props.navigationItem.label} link={props.navigationItem.to!} />
-      <Separator orientation={'vertical'} />
+      <ButtonGroupSeparator />
       <NavigationMenuTrigger
         className={clsx(
           'text-muted-foreground hover:bg-muted data-[state=open]:bg-muted h-9 min-w-0 px-2 py-0 rounded-md',
