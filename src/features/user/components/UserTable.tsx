@@ -1,19 +1,23 @@
 import type { ColumnDef } from '@tanstack/react-table';
-import type { IUser } from '../Types';
+import type { ISubmitUserProps, IUser } from '../Types';
 import { DataTable } from '@/features/data-table/DataTable';
-import { fuzzySort } from '@/features/data-table/DataFilter';
+import { UserFormDialog } from './UserFormDrawer';
+import { useState } from 'react';
 
 export interface IUserTableProps {
   users: IUser[];
   isLoading: boolean;
+  onSubmitUser: (data: ISubmitUserProps) => void;
 }
 
 const UserTable = (props: IUserTableProps) => {
+  const [selectedUser, setSelectedUser] = useState<IUser | undefined>(undefined);
   const userColumns: ColumnDef<IUser>[] = [
     {
-      accessorKey: 'name',
+      accessorFn: (row) => `${row.firstName} ${row.lastName}`,
+      id: 'name',
       header: 'Name',
-      cell: ({ row }) => row.original.name,
+      cell: (info) => info.getValue(),
       filterFn: 'includesString',
     },
     {
@@ -48,6 +52,7 @@ const UserTable = (props: IUserTableProps) => {
 
   return (
     <div className='space-y-4'>
+      <UserFormDialog onSubmit={props.onSubmitUser} mode={'create'} />
       <DataTable
         data={props.users}
         columns={userColumns}
