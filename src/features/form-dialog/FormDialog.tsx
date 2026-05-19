@@ -31,7 +31,7 @@ const FormDialog = (props: IFormDialogProps) => {
         </DialogHeader>
         {props.children}
         <DialogFooter>
-          <DialogClose>
+          <DialogClose asChild>
             <Button variant={'outline'}>Close</Button>
           </DialogClose>
           {props.submitButton}
