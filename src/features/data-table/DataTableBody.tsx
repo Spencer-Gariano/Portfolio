@@ -8,7 +8,7 @@ const DataTableBody = <T,>(props: IDataTableBodyProps<T>) => {
   return (
     <tbody>
       {props.table.getRowModel().rows.map((row) => (
-        <tr key={row.id} className='even:bg-muted/40 hover:bg-muted/60 transition-colors'>
+        <tr key={row.id} className='even:bg-muted/40 hover:bg-muted/50 transition-colors'>
           {row.getVisibleCells().map((cell) => (
             <td
               key={cell.id}

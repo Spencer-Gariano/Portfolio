@@ -35,9 +35,7 @@ const UserTable = (props: IUserTableProps) => {
 
   const onCreateUser = () => {
     setIsCreateFormOpen(true);
-    if (!!selectedUser) {
-      setSelectedUser(undefined);
-    }
+    setSelectedUser(undefined);
   };
 
   const onEditUser = (user: IUser) => {

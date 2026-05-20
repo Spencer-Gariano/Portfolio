@@ -2,16 +2,14 @@ import {
   type UpdateUserDialogProps,
   type CreateUserDialogProps,
   type UserFormData,
-  userFormSchema,
 } from '../Types';
-import { revalidateLogic, useForm } from '@tanstack/react-form';
 import { useMemo } from 'react';
 import { useMediaQuery } from 'usehooks-ts';
 import { FormDialog } from '@/features/form-dialog/FormDialog';
 import { FormDrawer } from '@/features/form-drawer/FormDrawer';
 import { Button } from '@/components/ui/Button';
-import { Field, FieldError, FieldGroup, FieldLabel } from '@/components/ui/Field';
-import { Input } from '@/components/ui/Input';
+import { UserFormFields } from './UserFormFields';
+import { useUserForm } from '../UseUserForm';
 
 export type UserFormProps = CreateUserDialogProps | UpdateUserDialogProps;
 
@@ -43,21 +41,11 @@ const UserForm = (props: UserFormProps) => {
       lastName: props.user?.lastName ?? '',
       email: props.user?.email ?? '',
     };
-  }, [props.user, props.mode]);
+  }, [props.user]);
 
   const isDesktop = useMediaQuery('(min-width: 768px)');
-  const userForm = useForm({
-    defaultValues: defaultValues,
-    validationLogic: revalidateLogic(),
-    validators: {
-      onDynamic: userFormSchema,
-    },
-    onSubmit: async ({ value }) => {
-      const result = userFormSchema.parse(value);
-      await onSubmit(result);
-    },
-  });
 
+  const userForm = useUserForm({ defaultValues: defaultValues, onSubmit: onSubmit });
   const FormSubmit = () => {
     return (
       <Button type={'submit'} form={'user-form'}>
@@ -69,101 +57,9 @@ const UserForm = (props: UserFormProps) => {
   const onChange = (value: boolean) => {
     props.setIsOpen(value);
     if (!value) {
-      props.setUser && props.setUser(undefined);
+      props.setUser?.(undefined);
       userForm.reset();
     }
-  };
-
-  const FormData = () => {
-    return (
-      <form
-        id={'user-form'}
-        onSubmit={(e) => {
-          e.preventDefault();
-          userForm.handleSubmit();
-        }}
-      >
-        <FieldGroup>
-          <div className={'grid grid-cols-1 gap-3 md:grid-cols-2'}>
-            <Field>
-              <userForm.Field
-                name={'firstName'}
-                children={(field) => {
-                  const isInvalid = field.state.meta.isTouched && !field.state.meta.isValid;
-                  return (
-                    <Field data-invalid={isInvalid}>
-                      <FieldLabel htmlFor={field.name}>First Name</FieldLabel>
-                      <Input
-                        id={field.name}
-                        name={field.name}
-                        value={field.state.value}
-                        onBlur={field.handleBlur}
-                        onChange={(e) => field.handleChange(e.target.value)}
-                        aria-invalid={isInvalid}
-                        placeholder='Enter first name'
-                        autoComplete='given-name'
-                      />
-                      {isInvalid && <FieldError errors={field.state.meta.errors} />}
-                    </Field>
-                  );
-                }}
-              />
-            </Field>
-            <Field>
-              <userForm.Field
-                name={'lastName'}
-                children={(field) => {
-                  const isInvalid = field.state.meta.isTouched && !field.state.meta.isValid;
-                  return (
-                    <Field data-invalid={isInvalid}>
-                      <FieldLabel htmlFor={field.name}>Last Name</FieldLabel>
-                      <Input
-                        id={field.name}
-                        name={field.name}
-                        value={field.state.value}
-                        onBlur={field.handleBlur}
-                        onChange={(e) => field.handleChange(e.target.value)}
-                        aria-invalid={isInvalid}
-                        placeholder='Enter last name'
-                        autoComplete='family-name'
-                      />
-                      {isInvalid && <FieldError errors={field.state.meta.errors} />}
-                    </Field>
-                  );
-                }}
-              />
-            </Field>
-          </div>
-          <div className='mt-1'>
-            <userForm.Field
-              name='email'
-              children={(field) => {
-                const isInvalid = field.state.meta.isTouched && !field.state.meta.isValid;
-
-                return (
-                  <Field data-invalid={isInvalid}>
-                    <FieldLabel htmlFor={field.name}>Email</FieldLabel>
-
-                    <Input
-                      id={field.name}
-                      name={field.name}
-                      value={field.state.value}
-                      onBlur={field.handleBlur}
-                      onChange={(e) => field.handleChange(e.target.value)}
-                      aria-invalid={isInvalid}
-                      placeholder='Enter email'
-                      autoComplete='email'
-                    />
-
-                    {isInvalid && <FieldError errors={field.state.meta.errors} />}
-                  </Field>
-                );
-              }}
-            />
-          </div>
-        </FieldGroup>
-      </form>
-    );
   };
 
   return isDesktop ? (
@@ -174,7 +70,7 @@ const UserForm = (props: UserFormProps) => {
       isOpen={props.isOpen}
       setIsOpen={onChange}
     >
-      <FormData />
+      <UserFormFields userForm={userForm} />
     </FormDialog>
   ) : (
     <FormDrawer
@@ -185,7 +81,7 @@ const UserForm = (props: UserFormProps) => {
       setIsOpen={onChange}
       direction={'bottom'}
     >
-      <FormData />
+      <UserFormFields userForm={userForm} />
     </FormDrawer>
   );
 };
