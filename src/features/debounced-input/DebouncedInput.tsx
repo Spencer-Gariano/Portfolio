@@ -1,5 +1,5 @@
 import { Input } from '@/components/ui/Input';
-import { useEffect, useState } from 'react';
+import { useRef, useState } from 'react';
 
 export interface IDebouncedInputProps extends Omit<
   React.InputHTMLAttributes<HTMLInputElement>,
@@ -12,20 +12,17 @@ export interface IDebouncedInputProps extends Omit<
 
 const DebouncedInput = (props: IDebouncedInputProps) => {
   const debounce = props.debounce ?? 500;
-  const [value, setValue] = useState(props.value);
+  const [value, setValue] = useState(() => props.value);
+  const timeoutRef = useRef<number | null>(null);
 
-  useEffect(() => {
-    setValue(props.value);
-  }, [props.value]);
-
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      props.onChange(value);
+  const handleChange = (next: string) => {
+    setValue(next);
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    timeoutRef.current = window.setTimeout(() => {
+      props.onChange(next);
     }, debounce);
+  };
 
-    return () => clearTimeout(timeout);
-  }, [value]);
-
-  return <Input {...props} value={value} onChange={(e) => setValue(e.target.value)} />;
+  return <Input {...props} value={value} onChange={(e) => handleChange(e.target.value)} />;
 };
 export { DebouncedInput };

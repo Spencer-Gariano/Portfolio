@@ -1,16 +1,17 @@
-import { createContext, useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+import { ThemeContext } from './ThemeContext';
 
 type Theme = 'light' | 'dark';
 
-type ThemeContextType = {
-  theme: Theme;
-  setTheme: (theme: Theme) => void;
-};
-
-const ThemeContext = createContext<ThemeContextType | null>(null);
-
 const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
-  const [theme, setThemeState] = useState<Theme>('light');
+  const getInitialTheme = (): Theme => {
+    const saved = localStorage.getItem('theme') as Theme | null;
+    if (saved) return saved;
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    return prefersDark ? 'dark' : 'light';
+  };
+  const [themeState, setThemeState] = useState<Theme>(() => getInitialTheme());
 
   const applyTheme = (theme: Theme) => {
     const root = document.documentElement;
@@ -24,28 +25,17 @@ const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
     setThemeState(theme);
   };
 
-  // Initialize theme
   useEffect(() => {
-    const saved = localStorage.getItem('theme') as Theme | null;
+    applyTheme(themeState);
 
-    if (saved) {
-      applyTheme(saved);
-      setThemeState(saved);
-    } else {
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      const initial = prefersDark ? 'dark' : 'light';
-      applyTheme(initial);
-      setThemeState(initial);
-    }
-  }, []);
+    localStorage.setItem('theme', themeState);
+  }, [themeState]);
 
-  return <ThemeContext.Provider value={{ theme, setTheme }}>{children}</ThemeContext.Provider>;
+  return (
+    <ThemeContext.Provider value={{ theme: themeState, setTheme }}>
+      {children}
+    </ThemeContext.Provider>
+  );
 };
 
-const useTheme = () => {
-  const ctx = useContext(ThemeContext);
-  if (!ctx) throw new Error('useTheme must be used within the context of ThemeProvider');
-  return ctx;
-};
-
-export { ThemeProvider, useTheme };
+export { ThemeProvider };

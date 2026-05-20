@@ -1,23 +1,16 @@
-import { sortingFns, type Column, type FilterFn, type SortingFn } from '@tanstack/react-table';
+import { type Column } from '@tanstack/react-table';
 import { DebouncedInput } from '../debounced-input/DebouncedInput';
-import { type RankingInfo, rankItem, compareItems } from '@tanstack/match-sorter-utils';
-declare module '@tanstack/react-table' {
-  //add fuzzy filter to the filterFns
-  interface FilterFns {
-    fuzzy: FilterFn<unknown>;
-  }
-  interface FilterMeta {
-    itemRank: RankingInfo;
-  }
-}
+type FilterProps<TData> = {
+  column: Column<TData, unknown>;
+};
 // A lot of this was pulled from their example of fuzzy searching/sorting https://tanstack.com/table/latest/docs/framework/react/examples/filters-fuzzy
-export function Filter({ column }: { column: Column<any, unknown> }) {
+export function Filter<TData>({ column }: FilterProps<TData>) {
   const columnFilterValue = column.getFilterValue();
 
   return (
     <DebouncedInput
       type='text'
-      value={(columnFilterValue ?? '') as string}
+      value={typeof columnFilterValue === 'string' ? columnFilterValue : ''}
       onChange={(value) => column.setFilterValue(value)}
       placeholder={`Search...`}
       className='w-36 rounded border shadow'
@@ -25,32 +18,3 @@ export function Filter({ column }: { column: Column<any, unknown> }) {
     />
   );
 }
-
-export const fuzzyFilter: FilterFn<any> = (row, columnId, value, addMeta) => {
-  // Rank the item
-  const itemRank = rankItem(row.getValue(columnId), value);
-
-  // Store the itemRank info
-  addMeta({
-    itemRank,
-  });
-
-  // Return if the item should be filtered in/out
-  return itemRank.passed;
-};
-
-// Define a custom fuzzy sort function that will sort by rank if the row has ranking information
-export const fuzzySort: SortingFn<any> = (rowA, rowB, columnId) => {
-  let dir = 0;
-
-  // Only sort by rank if the column has ranking information
-  if (rowA.columnFiltersMeta[columnId]) {
-    dir = compareItems(
-      rowA.columnFiltersMeta[columnId]?.itemRank!,
-      rowB.columnFiltersMeta[columnId]?.itemRank!,
-    );
-  }
-
-  // Provide an alphanumeric fallback for when the item ranks are equal
-  return dir === 0 ? sortingFns.alphanumeric(rowA, rowB, columnId) : dir;
-};

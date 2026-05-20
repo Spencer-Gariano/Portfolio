@@ -1,5 +1,5 @@
 import type { ISubmitUserProps, IUser } from './Types';
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { queryOptions, useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { UserQueryKeys } from './QueryKeys';
 import { createUser, deleteUser, fetchUsers, updateUser } from './UserApi';
 import { toast } from 'sonner';
@@ -14,13 +14,15 @@ export interface IUseUsersResponse {
 export function useUsers(): IUseUsersResponse {
   const queryClient = useQueryClient();
 
-  const { isLoading: areUsersLoading, data: users } = useQuery({
+  const usersQueryOptions = queryOptions({
     queryKey: [UserQueryKeys.GetUsers],
     queryFn: async () => {
       const data = await fetchUsers();
       return data;
     },
   });
+
+  const { isLoading: areUsersLoading, data: users } = useQuery(usersQueryOptions);
 
   const { mutate: onSubmitUser } = useMutation({
     mutationFn: async (variables: ISubmitUserProps) => {
@@ -30,7 +32,7 @@ export function useUsers(): IUseUsersResponse {
       return createUser(variables.newUser);
     },
     onSuccess: (data, variables) => {
-      queryClient.setQueryData([UserQueryKeys.GetUsers], (old: IUser[] = []) => {
+      queryClient.setQueryData(usersQueryOptions.queryKey, (old: IUser[] = []) => {
         const index = old.findIndex((u) => u.id === data.id);
         if (index === -1) {
           return [...old, data]; // create
@@ -55,7 +57,7 @@ export function useUsers(): IUseUsersResponse {
       return await deleteUser(user);
     },
     onSuccess: (data) => {
-      queryClient.setQueryData([UserQueryKeys.GetUsers], (old: IUser[] = []) => {
+      queryClient.setQueryData(usersQueryOptions.queryKey, (old: IUser[] = []) => {
         return old.filter((u) => u.id !== data);
       });
       toast.success('Deleted User');
