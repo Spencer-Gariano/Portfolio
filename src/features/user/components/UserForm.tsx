@@ -9,7 +9,7 @@ import { FormDialog } from '@/features/form-dialog/FormDialog';
 import { FormDrawer } from '@/features/form-drawer/FormDrawer';
 import { Button } from '@/components/ui/Button';
 import { UserFormFields } from './UserFormFields';
-import { useUserForm } from '../UseUserForm_tmp';
+import { useUserForm } from '../UseUserForm';
 
 export type UserFormProps = CreateUserDialogProps | UpdateUserDialogProps;
 

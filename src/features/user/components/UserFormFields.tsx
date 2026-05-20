@@ -1,4 +1,4 @@
-import type { UserFormInstance } from '../UseUserForm_tmp';
+import type { UserFormInstance } from '../UseUserForm';
 import { FieldError, FieldGroup, FieldLabel, Field } from '@/components/ui/Field';
 import { Input } from '@/components/ui/Input';
 
