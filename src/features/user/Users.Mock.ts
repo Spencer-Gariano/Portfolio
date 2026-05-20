@@ -3,7 +3,8 @@ import type { IUser } from './Types';
 export const mockUsers: IUser[] = [
   {
     id: '1',
-    name: 'Alice Johnson',
+    firstName: 'Alice',
+    lastName: 'Johnson',
     email: 'alice@example.com',
     createdAt: '2025-01-10T12:00:00Z',
     lastLoginAt: '2026-05-12T08:00:00Z',
@@ -11,7 +12,8 @@ export const mockUsers: IUser[] = [
   },
   {
     id: '2',
-    name: 'Bob Smith',
+    firstName: 'Bob',
+    lastName: 'Smith',
     email: 'bob@example.com',
     createdAt: '2024-11-03T12:00:00Z',
     lastLoginAt: '2026-05-10T10:30:00Z',
@@ -19,7 +21,8 @@ export const mockUsers: IUser[] = [
   },
   {
     id: '3',
-    name: 'Charlie Davis',
+    firstName: 'Charlie',
+    lastName: 'Davis',
     email: 'charlie@example.com',
     createdAt: '2025-02-14T09:15:00Z',
     lastLoginAt: '2026-05-11T14:45:00Z',
@@ -27,7 +30,8 @@ export const mockUsers: IUser[] = [
   },
   {
     id: '4',
-    name: 'Diana Miller',
+    firstName: 'Diana',
+    lastName: 'Miller',
     email: 'diana@example.com',
     createdAt: '2024-12-01T16:20:00Z',
     lastLoginAt: '2026-05-09T11:10:00Z',
@@ -35,7 +39,8 @@ export const mockUsers: IUser[] = [
   },
   {
     id: '5',
-    name: 'Ethan Wilson',
+    firstName: 'Ethan',
+    lastName: 'Wilson',
     email: 'ethan@example.com',
     createdAt: '2025-03-08T13:00:00Z',
     lastLoginAt: '2026-05-13T09:25:00Z',
@@ -43,7 +48,8 @@ export const mockUsers: IUser[] = [
   },
   {
     id: '6',
-    name: 'Fiona Clark',
+    firstName: 'Fiona',
+    lastName: 'Clark',
     email: 'fiona@example.com',
     createdAt: '2025-01-22T08:45:00Z',
     lastLoginAt: '2026-05-12T15:35:00Z',
@@ -51,7 +57,8 @@ export const mockUsers: IUser[] = [
   },
   {
     id: '7',
-    name: 'George Lewis',
+    firstName: 'George',
+    lastName: 'Lewis',
     email: 'george@example.com',
     createdAt: '2024-10-19T10:10:00Z',
     lastLoginAt: '2026-05-08T17:20:00Z',
@@ -59,7 +66,8 @@ export const mockUsers: IUser[] = [
   },
   {
     id: '8',
-    name: 'Hannah Walker',
+    firstName: 'Hannah',
+    lastName: 'Walker',
     email: 'hannah@example.com',
     createdAt: '2025-04-02T07:50:00Z',
     lastLoginAt: '2026-05-14T08:05:00Z',
@@ -67,7 +75,8 @@ export const mockUsers: IUser[] = [
   },
   {
     id: '9',
-    name: 'Ian Hall',
+    firstName: 'Ian',
+    lastName: 'Hall',
     email: 'ian@example.com',
     createdAt: '2025-02-28T14:00:00Z',
     lastLoginAt: '2026-05-07T12:40:00Z',
@@ -75,7 +84,8 @@ export const mockUsers: IUser[] = [
   },
   {
     id: '10',
-    name: 'Julia Allen',
+    firstName: 'Julia',
+    lastName: 'Allen',
     email: 'julia@example.com',
     createdAt: '2024-09-11T11:25:00Z',
     lastLoginAt: '2026-05-10T19:10:00Z',
@@ -83,7 +93,8 @@ export const mockUsers: IUser[] = [
   },
   {
     id: '11',
-    name: 'Kevin Young',
+    firstName: 'Kevin',
+    lastName: 'Young',
     email: 'kevin@example.com',
     createdAt: '2025-01-30T10:00:00Z',
     lastLoginAt: '2026-05-06T13:50:00Z',
@@ -91,7 +102,8 @@ export const mockUsers: IUser[] = [
   },
   {
     id: '12',
-    name: 'Laura King',
+    firstName: 'Laura',
+    lastName: 'King',
     email: 'laura@example.com',
     createdAt: '2025-03-17T15:45:00Z',
     lastLoginAt: '2026-05-11T07:30:00Z',
@@ -99,7 +111,8 @@ export const mockUsers: IUser[] = [
   },
   {
     id: '13',
-    name: 'Michael Scott',
+    firstName: 'Michael',
+    lastName: 'Scott',
     email: 'michael@example.com',
     createdAt: '2024-08-25T09:35:00Z',
     lastLoginAt: '2026-05-09T16:15:00Z',
@@ -107,7 +120,8 @@ export const mockUsers: IUser[] = [
   },
   {
     id: '14',
-    name: 'Nina Adams',
+    firstName: 'Nina',
+    lastName: 'Adams',
     email: 'nina@example.com',
     createdAt: '2025-04-10T18:20:00Z',
     lastLoginAt: '2026-05-12T10:05:00Z',
@@ -115,7 +129,8 @@ export const mockUsers: IUser[] = [
   },
   {
     id: '15',
-    name: 'Oliver Baker',
+    firstName: 'Oliver',
+    lastName: 'Baker',
     email: 'oliver@example.com',
     createdAt: '2025-02-05T12:10:00Z',
     lastLoginAt: '2026-05-08T08:45:00Z',
@@ -123,7 +138,8 @@ export const mockUsers: IUser[] = [
   },
   {
     id: '16',
-    name: 'Paula Carter',
+    firstName: 'Paula',
+    lastName: 'Carter',
     email: 'paula@example.com',
     createdAt: '2024-11-21T13:30:00Z',
     lastLoginAt: '2026-05-14T14:25:00Z',
@@ -131,7 +147,8 @@ export const mockUsers: IUser[] = [
   },
   {
     id: '17',
-    name: 'Quentin Evans',
+    firstName: 'Quentin',
+    lastName: 'Evans',
     email: 'quentin@example.com',
     createdAt: '2025-01-18T07:15:00Z',
     lastLoginAt: '2026-05-10T18:40:00Z',
@@ -139,7 +156,8 @@ export const mockUsers: IUser[] = [
   },
   {
     id: '18',
-    name: 'Rachel Flores',
+    firstName: 'Rachel',
+    lastName: 'Flores',
     email: 'rachel@example.com',
     createdAt: '2025-03-25T16:50:00Z',
     lastLoginAt: '2026-05-11T20:10:00Z',
@@ -147,7 +165,8 @@ export const mockUsers: IUser[] = [
   },
   {
     id: '19',
-    name: 'Samuel Green',
+    firstName: 'Samuel',
+    lastName: 'Green',
     email: 'samuel@example.com',
     createdAt: '2024-12-14T10:40:00Z',
     lastLoginAt: '2026-05-09T09:00:00Z',
@@ -155,7 +174,8 @@ export const mockUsers: IUser[] = [
   },
   {
     id: '20',
-    name: 'Tina Harris',
+    firstName: 'Tina',
+    lastName: 'Harris',
     email: 'tina@example.com',
     createdAt: '2025-04-05T08:25:00Z',
     lastLoginAt: '2026-05-13T11:45:00Z',
@@ -163,7 +183,8 @@ export const mockUsers: IUser[] = [
   },
   {
     id: '21',
-    name: 'Ulysses Irving',
+    firstName: 'Ulysses',
+    lastName: 'Irving',
     email: 'ulysses@example.com',
     createdAt: '2025-01-07T17:10:00Z',
     lastLoginAt: '2026-05-06T07:20:00Z',
@@ -171,7 +192,8 @@ export const mockUsers: IUser[] = [
   },
   {
     id: '22',
-    name: 'Victoria James',
+    firstName: 'Victoria',
+    lastName: 'James',
     email: 'victoria@example.com',
     createdAt: '2024-10-30T11:55:00Z',
     lastLoginAt: '2026-05-12T16:40:00Z',
@@ -179,7 +201,8 @@ export const mockUsers: IUser[] = [
   },
   {
     id: '23',
-    name: 'William Knight',
+    firstName: 'William',
+    lastName: 'Knight',
     email: 'william@example.com',
     createdAt: '2025-02-12T14:30:00Z',
     lastLoginAt: '2026-05-08T19:35:00Z',
@@ -187,7 +210,8 @@ export const mockUsers: IUser[] = [
   },
   {
     id: '24',
-    name: 'Xavier Lopez',
+    firstName: 'Xavier',
+    lastName: 'Lopez',
     email: 'xavier@example.com',
     createdAt: '2025-03-01T09:00:00Z',
     lastLoginAt: '2026-05-13T08:50:00Z',
@@ -195,7 +219,8 @@ export const mockUsers: IUser[] = [
   },
   {
     id: '25',
-    name: 'Yvonne Martinez',
+    firstName: 'Yvonne',
+    lastName: 'Martinez',
     email: 'yvonne@example.com',
     createdAt: '2024-09-18T15:20:00Z',
     lastLoginAt: '2026-05-10T10:15:00Z',
@@ -203,7 +228,8 @@ export const mockUsers: IUser[] = [
   },
   {
     id: '26',
-    name: 'Zachary Nelson',
+    firstName: 'Zachary',
+    lastName: 'Nelson',
     email: 'zachary@example.com',
     createdAt: '2025-04-11T12:45:00Z',
     lastLoginAt: '2026-05-14T17:30:00Z',
@@ -211,7 +237,8 @@ export const mockUsers: IUser[] = [
   },
   {
     id: '27',
-    name: 'Amber Owens',
+    firstName: 'Amber',
+    lastName: 'Owens',
     email: 'amber@example.com',
     createdAt: '2025-01-25T13:40:00Z',
     lastLoginAt: '2026-05-11T12:10:00Z',
@@ -219,7 +246,8 @@ export const mockUsers: IUser[] = [
   },
   {
     id: '28',
-    name: 'Brandon Perez',
+    firstName: 'Brandon',
+    lastName: 'Perez',
     email: 'brandon@example.com',
     createdAt: '2024-12-08T10:50:00Z',
     lastLoginAt: '2026-05-09T15:20:00Z',
@@ -227,7 +255,8 @@ export const mockUsers: IUser[] = [
   },
   {
     id: '29',
-    name: 'Cynthia Reed',
+    firstName: 'Cynthia',
+    lastName: 'Reed',
     email: 'cynthia@example.com',
     createdAt: '2025-02-16T08:35:00Z',
     lastLoginAt: '2026-05-12T09:55:00Z',
@@ -235,7 +264,8 @@ export const mockUsers: IUser[] = [
   },
   {
     id: '30',
-    name: 'Daniel Stewart',
+    firstName: 'Daniel',
+    lastName: 'Stewart',
     email: 'daniel@example.com',
     createdAt: '2025-03-22T16:15:00Z',
     lastLoginAt: '2026-05-13T18:05:00Z',
@@ -243,7 +273,8 @@ export const mockUsers: IUser[] = [
   },
   {
     id: '31',
-    name: 'Emma Turner',
+    firstName: 'Emma',
+    lastName: 'Turner',
     email: 'emma@example.com',
     createdAt: '2024-11-12T07:25:00Z',
     lastLoginAt: '2026-05-08T13:40:00Z',
@@ -251,7 +282,8 @@ export const mockUsers: IUser[] = [
   },
   {
     id: '32',
-    name: 'Frank Underwood',
+    firstName: 'Frank',
+    lastName: 'Underwood',
     email: 'frank@example.com',
     createdAt: '2025-01-02T18:30:00Z',
     lastLoginAt: '2026-05-14T06:55:00Z',
@@ -259,7 +291,8 @@ export const mockUsers: IUser[] = [
   },
   {
     id: '33',
-    name: 'Grace Vaughn',
+    firstName: 'Grace',
+    lastName: 'Vaughn',
     email: 'grace@example.com',
     createdAt: '2025-04-06T11:05:00Z',
     lastLoginAt: '2026-05-12T20:30:00Z',
@@ -267,7 +300,8 @@ export const mockUsers: IUser[] = [
   },
   {
     id: '34',
-    name: 'Henry White',
+    firstName: 'Henry',
+    lastName: 'White',
     email: 'henry@example.com',
     createdAt: '2024-10-01T09:45:00Z',
     lastLoginAt: '2026-05-07T16:00:00Z',
@@ -275,7 +309,8 @@ export const mockUsers: IUser[] = [
   },
   {
     id: '35',
-    name: 'Isabella Xu',
+    firstName: 'Isabella',
+    lastName: 'Xu',
     email: 'isabella@example.com',
     createdAt: '2025-03-29T14:20:00Z',
     lastLoginAt: '2026-05-13T10:10:00Z',
@@ -283,7 +318,8 @@ export const mockUsers: IUser[] = [
   },
   {
     id: '36',
-    name: 'Jacob Young',
+    firstName: 'Jacob',
+    lastName: 'Young',
     email: 'jacob@example.com',
     createdAt: '2025-02-20T12:35:00Z',
     lastLoginAt: '2026-05-11T08:25:00Z',
@@ -291,7 +327,8 @@ export const mockUsers: IUser[] = [
   },
   {
     id: '37',
-    name: 'Kara Zimmerman',
+    firstName: 'Kara',
+    lastName: 'Zimmerman',
     email: 'kara@example.com',
     createdAt: '2024-12-27T15:55:00Z',
     lastLoginAt: '2026-05-09T19:45:00Z',
@@ -299,7 +336,8 @@ export const mockUsers: IUser[] = [
   },
   {
     id: '38',
-    name: 'Liam Brooks',
+    firstName: 'Liam',
+    lastName: 'Brooks',
     email: 'liam@example.com',
     createdAt: '2025-01-15T10:05:00Z',
     lastLoginAt: '2026-05-14T12:50:00Z',
@@ -307,7 +345,8 @@ export const mockUsers: IUser[] = [
   },
   {
     id: '39',
-    name: 'Mia Collins',
+    firstName: 'Mia',
+    lastName: 'Collins',
     email: 'mia@example.com',
     createdAt: '2025-04-08T08:15:00Z',
     lastLoginAt: '2026-05-13T07:40:00Z',
@@ -315,7 +354,8 @@ export const mockUsers: IUser[] = [
   },
   {
     id: '40',
-    name: 'Noah Diaz',
+    firstName: 'Noah',
+    lastName: 'Diaz',
     email: 'noah@example.com',
     createdAt: '2025-02-09T17:25:00Z',
     lastLoginAt: '2026-05-12T18:20:00Z',

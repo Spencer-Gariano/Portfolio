@@ -3,7 +3,7 @@ import { PageHeader } from './PageHeader';
 import { UserTable } from '@/features/user/components/UserTable';
 
 const UsersPage = () => {
-  const { users, areUsersLoading } = useUsers();
+  const { users, areUsersLoading, onSubmitUser, onDeleteUser } = useUsers();
 
   return (
     <div className='space-y-8'>
@@ -13,7 +13,12 @@ const UsersPage = () => {
           'Users management playground focused on TanStack Table, TanStack Form, React Query, and CRUD synchronization patterns.'
         }
       />
-      <UserTable users={users} isLoading={areUsersLoading} />
+      <UserTable
+        users={users}
+        isLoading={areUsersLoading}
+        onSubmitUser={onSubmitUser}
+        onDeleteUser={onDeleteUser}
+      />
     </div>
   );
 };

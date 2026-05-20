@@ -1,3 +1,4 @@
+import { Toaster } from '@/components/ui/Sonner';
 import { Footer } from '@/features/footer/Footer';
 import { NavigationBar } from '@/features/navigation/NavigationBar';
 import { ThemeToggle } from '@/features/theme-toggle/ThemeToggle';
@@ -12,7 +13,7 @@ const RootLayout = () => {
           <ThemeToggle />
         </div>
       </header>
-
+      <Toaster position={'top-center'} />
       <main className='flex-1'>
         <div className='mx-auto max-w-5xl px-4 py-12'>
           <Outlet />
