@@ -7,7 +7,7 @@ export interface IDataTableToolbarProps {
 
 const DataTableToolbar = (props: IDataTableToolbarProps) => {
   return (
-    <div className='flex justify-end px-2 pt-2 pb-1'>
+    <div className='flex justify-end px-2 pt-2'>
       <DebouncedInput
         value={props.globalFilter ?? ''}
         onChange={(value) => props.setGlobalFilter(String(value))}
