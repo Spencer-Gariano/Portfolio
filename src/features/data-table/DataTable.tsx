@@ -13,7 +13,7 @@ import { useEffect, useState } from 'react';
 import { DataTablePagination } from './DataTablePagination';
 import { DataTableBody } from './DataTableBody';
 import { DataTableHeader } from './DataTableHeader';
-import { fuzzyFilter } from './DataFilter.utils';
+import { fuzzyFilter } from './DataFilter.Utils';
 import { DataTableToolbar } from './DataTableToolbar';
 
 export interface IDataTableProps<T> {
