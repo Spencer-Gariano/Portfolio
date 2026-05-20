@@ -27,3 +27,8 @@ export async function updateUser(updatedUser: UserFormData, currentUser: IUser):
     ...updatedUser,
   } satisfies IUser;
 }
+
+export async function deleteUser(user: IUser): Promise<string> {
+  await new Promise((resolve) => setTimeout(resolve, 300));
+  return user.id;
+}

@@ -1,13 +1,14 @@
 import type { ISubmitUserProps, IUser } from './Types';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { UserQueryKeys } from './QueryKeys';
-import { createUser, fetchUsers, updateUser } from './UserApi';
+import { createUser, deleteUser, fetchUsers, updateUser } from './UserApi';
 import { toast } from 'sonner';
 
 export interface IUseUsersResponse {
   users: IUser[];
   areUsersLoading: boolean;
   onSubmitUser: (data: ISubmitUserProps) => void;
+  onDeleteUser: (data: IUser) => void;
 }
 
 export function useUsers(): IUseUsersResponse {
@@ -22,13 +23,13 @@ export function useUsers(): IUseUsersResponse {
   });
 
   const { mutate: onSubmitUser } = useMutation({
-    mutationFn: (variables: ISubmitUserProps) => {
+    mutationFn: async (variables: ISubmitUserProps) => {
       if (variables.mode === 'update' && variables.currentUser) {
-        return updateUser(variables.newUser, variables.currentUser);
+        return await updateUser(variables.newUser, variables.currentUser);
       }
       return createUser(variables.newUser);
     },
-    onSuccess: (data, variables, onMutateResult) => {
+    onSuccess: (data, variables) => {
       queryClient.setQueryData([UserQueryKeys.GetUsers], (old: IUser[] = []) => {
         const index = old.findIndex((u) => u.id === data.id);
         if (index === -1) {
@@ -39,13 +40,28 @@ export function useUsers(): IUseUsersResponse {
         return copy;
       });
       if (variables.mode === 'update') {
-        toast('Updated User');
+        toast.success('Updated User');
       } else {
-        toast('Created User');
+        toast.success('Created User');
       }
     },
     onError: (err) => {
-      toast(err.message);
+      toast.warning(err.message);
+    },
+  });
+
+  const { mutate: onDeleteUser } = useMutation({
+    mutationFn: async (user: IUser) => {
+      return await deleteUser(user);
+    },
+    onSuccess: (data) => {
+      queryClient.setQueryData([UserQueryKeys.GetUsers], (old: IUser[] = []) => {
+        return old.filter((u) => u.id !== data);
+      });
+      toast.success('Deleted User');
+    },
+    onError: (err) => {
+      toast.warning(err.message);
     },
   });
 
@@ -53,5 +69,6 @@ export function useUsers(): IUseUsersResponse {
     users: users ?? [],
     areUsersLoading: areUsersLoading ?? false,
     onSubmitUser: onSubmitUser,
+    onDeleteUser: onDeleteUser,
   };
 }

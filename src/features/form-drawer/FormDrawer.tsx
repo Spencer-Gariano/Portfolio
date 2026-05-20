@@ -7,12 +7,10 @@ import {
   DrawerFooter,
   DrawerHeader,
   DrawerTitle,
-  DrawerTrigger,
 } from '@/components/ui/Drawer';
 import { Button } from '@/components/ui/Button';
 
 export interface IFormDrawerProps extends PropsWithChildren {
-  drawerTrigger: React.ReactNode;
   drawerTitle: string;
   drawerDescription: string;
   submitButton: React.ReactNode;
@@ -24,7 +22,6 @@ export interface IFormDrawerProps extends PropsWithChildren {
 const FormDrawer = (props: IFormDrawerProps) => {
   return (
     <Drawer open={props.isOpen} onOpenChange={props.setIsOpen} direction={props.direction}>
-      <DrawerTrigger asChild>{props.drawerTrigger}</DrawerTrigger>
       <DrawerContent>
         <DrawerHeader>
           <DrawerTitle>{props.drawerTitle}</DrawerTitle>
@@ -35,7 +32,7 @@ const FormDrawer = (props: IFormDrawerProps) => {
           <DrawerClose asChild>
             <Button variant={'outline'}>Close</Button>
           </DrawerClose>
-          <Button>{props.submitButton}</Button>
+          {props.submitButton}
         </DrawerFooter>
       </DrawerContent>
     </Drawer>

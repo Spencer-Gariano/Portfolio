@@ -62,12 +62,14 @@ const DataTable = <T,>(props: IDataTableProps<T>) => {
   return props.isLoading ? (
     <TableLoadingSkeleton columns={props.columns} />
   ) : (
-    <div className='max-h-[70vh] w-full overflow-auto rounded-md border'>
+    <div className='flex max-h-[70vh] w-full flex-col rounded-md border'>
       <DataTableToolbar globalFilter={globalFilter} setGlobalFilter={setGlobalFilter} />
-      <table className='w-max min-w-full text-sm'>
-        <DataTableHeader table={table} />
-        <DataTableBody table={table} />
-      </table>
+      <div className={'flex-1 overflow-auto'}>
+        <table className='w-max min-w-full text-sm'>
+          <DataTableHeader table={table} />
+          <DataTableBody table={table} />
+        </table>
+      </div>
       <DataTablePagination table={table} />
     </div>
   );

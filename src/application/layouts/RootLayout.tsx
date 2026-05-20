@@ -13,7 +13,7 @@ const RootLayout = () => {
           <ThemeToggle />
         </div>
       </header>
-      <Toaster />
+      <Toaster position={'top-center'} />
       <main className='flex-1'>
         <div className='mx-auto max-w-5xl px-4 py-12'>
           <Outlet />

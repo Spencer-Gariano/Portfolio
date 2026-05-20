@@ -19,7 +19,7 @@ export interface IDataTablePaginationProps<T> {
 
 const DataTablePagination = <T,>(props: IDataTablePaginationProps<T>) => {
   return (
-    <div className='flex h-12 items-center justify-end-safe border-t px-2 py-2'>
+    <div className='flex h-12 items-center justify-end border-t px-2 py-2'>
       {/* Page size controls */}
       <div className='flex items-center gap-2'>
         <span className='text-muted-foreground text-sm leading-none'>Rows</span>

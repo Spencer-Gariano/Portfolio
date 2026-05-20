@@ -7,12 +7,10 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from '@/components/ui/Dialog';
 import { type PropsWithChildren } from 'react';
 
 export interface IFormDialogProps extends PropsWithChildren {
-  dialogTrigger: React.ReactNode;
   dialogTitle: string;
   dialogDescription: string;
   submitButton: React.ReactNode;
@@ -23,14 +21,13 @@ export interface IFormDialogProps extends PropsWithChildren {
 const FormDialog = (props: IFormDialogProps) => {
   return (
     <Dialog open={props.isOpen} onOpenChange={props.setIsOpen}>
-      <DialogTrigger asChild>{props.dialogTrigger}</DialogTrigger>
       <DialogContent>
         <DialogHeader>
           <DialogTitle>{props.dialogTitle}</DialogTitle>
           <DialogDescription>{props.dialogDescription}</DialogDescription>
         </DialogHeader>
         {props.children}
-        <DialogFooter>
+        <DialogFooter className={'border-0 bg-transparent'}>
           <DialogClose asChild>
             <Button variant={'outline'}>Close</Button>
           </DialogClose>

@@ -28,6 +28,8 @@ export type UserFormData = z.infer<typeof userFormSchema>;
 export type CreateUserDialogProps = {
   mode: 'create';
   onSubmit: (data: ISubmitUserProps) => void;
+  isOpen: boolean;
+  setIsOpen: (value: boolean) => void;
   user?: never;
   setUser?: never;
 };
@@ -35,6 +37,8 @@ export type CreateUserDialogProps = {
 export type UpdateUserDialogProps = {
   mode: 'update';
   onSubmit: (data: ISubmitUserProps) => void;
+  isOpen: boolean;
+  setIsOpen: (value: boolean) => void;
   user: IUser;
   setUser: (user: IUser | undefined) => void;
 };
