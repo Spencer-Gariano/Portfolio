@@ -9,14 +9,13 @@ import {
   type SortingState,
 } from '@tanstack/react-table';
 import { TableLoadingSkeleton } from '../table-loading-skeleton/TableLoadingSkeleton';
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { DataTablePagination } from './DataTablePagination';
 import { DataTableBody } from './DataTableBody';
 import { DataTableHeader } from './DataTableHeader';
 import { fuzzyFilter } from './filters/DataFilter.Utils';
 import { DataTableToolbar } from './DataTableToolbar';
 import { dateBetweenFilter } from './filters/DateBetweenFilter';
-import { cn } from '@/lib/Utils';
 
 export interface IDataTableProps<T> {
   data: T[];
@@ -30,8 +29,6 @@ const DataTable = <T,>(props: IDataTableProps<T>) => {
   const [sorting, setSorting] = useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
   const [globalFilter, setGlobalFilter] = useState('');
-  const [canScroll, setCanScroll] = useState(false);
-  const scrollRef = useRef<HTMLDivElement>(null);
 
   const table = useReactTable({
     data: props.data,

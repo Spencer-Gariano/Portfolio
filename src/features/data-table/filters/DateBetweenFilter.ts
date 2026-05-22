@@ -1,4 +1,4 @@
-import { isAfter, isBefore, isSameDay, isWithinInterval } from 'date-fns';
+import { isSameDay, isWithinInterval } from 'date-fns';
 import type { FilterFn } from '@tanstack/react-table';
 import type { IDateRangeFilter } from './DataFilter.Utils';
 

@@ -20,7 +20,7 @@ const DatePicker = (props: IDatePickerProps) => {
       return (
         <Popover>
           <PopoverTrigger asChild>
-            <Button variant='outline' className='w-[280px] justify-start text-left font-normal'>
+            <Button variant='outline'>
               <CalendarIcon />
 
               {props.date ? format(props.date, 'PPP') : <span>Pick a date</span>}

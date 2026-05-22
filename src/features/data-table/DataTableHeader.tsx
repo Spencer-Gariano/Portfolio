@@ -1,5 +1,4 @@
 import { flexRender, type Table } from '@tanstack/react-table';
-import { Filter } from './filters/DataFilter';
 import { ChevronUp, ChevronDown } from 'lucide-react';
 import { ColumnFilter } from './filters/ColumnFilter';
 
