@@ -2,7 +2,11 @@ import { Filter } from './DataFilter';
 import { DateBetween } from './DateBetween';
 import type { Column } from '@tanstack/react-table';
 
-const ColumnFilter = ({ column }: { column: Column<any, unknown> }) => {
+export interface IColumnFilterProps<TData> {
+  column: Column<TData, unknown>;
+}
+
+const ColumnFilter = <TData,>({ column }: IColumnFilterProps<TData>) => {
   const filterVariant = column.columnDef.meta?.filterVariant;
 
   switch (filterVariant) {

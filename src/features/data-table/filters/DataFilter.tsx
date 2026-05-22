@@ -1,10 +1,11 @@
 import { type Column } from '@tanstack/react-table';
 import { DebouncedInput } from '../../debounced-input/DebouncedInput';
-type FilterProps<TData> = {
+export interface IFilterProps<TData> {
   column: Column<TData, unknown>;
-};
+}
+
 // A lot of this was pulled from their example of fuzzy searching/sorting https://tanstack.com/table/latest/docs/framework/react/examples/filters-fuzzy
-export function Filter<TData>({ column }: FilterProps<TData>) {
+const Filter = <TData,>({ column }: IFilterProps<TData>) => {
   const columnFilterValue = column.getFilterValue();
 
   return (
@@ -17,4 +18,6 @@ export function Filter<TData>({ column }: FilterProps<TData>) {
       debounce={500}
     />
   );
-}
+};
+
+export { Filter };
