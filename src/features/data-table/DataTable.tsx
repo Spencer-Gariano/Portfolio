@@ -13,8 +13,9 @@ import { useEffect, useState } from 'react';
 import { DataTablePagination } from './DataTablePagination';
 import { DataTableBody } from './DataTableBody';
 import { DataTableHeader } from './DataTableHeader';
-import { fuzzyFilter } from './DataFilter.Utils';
+import { fuzzyFilter } from './filters/DataFilter.Utils';
 import { DataTableToolbar } from './DataTableToolbar';
+import { dateBetweenFilter } from './filters/DateBetweenFilter';
 
 export interface IDataTableProps<T> {
   data: T[];
@@ -32,7 +33,7 @@ const DataTable = <T,>(props: IDataTableProps<T>) => {
   const table = useReactTable({
     data: props.data,
     columns: props.columns,
-    filterFns: { fuzzy: fuzzyFilter },
+    filterFns: { fuzzy: fuzzyFilter, dateBetween: dateBetweenFilter },
     onColumnFiltersChange: setColumnFilters,
     onGlobalFilterChange: setGlobalFilter,
     globalFilterFn: 'fuzzy',
@@ -70,7 +71,7 @@ const DataTable = <T,>(props: IDataTableProps<T>) => {
   ) : (
     <div className='flex max-h-[72vh] w-full flex-col overflow-hidden rounded-md border'>
       <DataTableToolbar globalFilter={globalFilter} setGlobalFilter={setGlobalFilter} />
-      <div className='min-h-0 flex-1 overflow-y-auto overscroll-contain'>
+      <div className={'min-h-0 flex-1 overflow-y-auto'}>
         <table className='min-w-full table-fixed border-collapse text-sm'>
           <DataTableHeader table={table} />
           <DataTableBody table={table} />

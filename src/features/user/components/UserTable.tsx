@@ -8,6 +8,7 @@ import { createDataTableRowActions } from '@/features/data-table/DataTableRowAct
 import { Button } from '@/components/ui/Button';
 import { Pencil, Trash } from 'lucide-react';
 import { useMediaQuery } from 'usehooks-ts';
+import { differenceInDays, format, formatDistanceToNow } from 'date-fns';
 
 export interface IUserTableProps {
   users: IUser[];
@@ -67,21 +68,48 @@ const UserTable = (props: IUserTableProps) => {
         const status = row.original.status;
         return <span className={`text-sm capitalize`}>{status}</span>;
       },
-      meta: {
-        filterVariant: 'select',
-      },
     },
     {
       accessorKey: 'createdAt',
       header: 'Created',
-      cell: ({ row }) => new Date(row.original.createdAt).toLocaleDateString(),
-      filterFn: 'weakEquals',
+      cell: ({ row }) => {
+        const createdAt = row.original.createdAt;
+        if (!createdAt) {
+          return '';
+        }
+
+        //Will return the format 'June 16, 2025'
+        return format(new Date(createdAt), 'MMM d, yyyy');
+      },
+      filterFn: 'dateBetween',
+      meta: {
+        filterVariant: 'date-range',
+      },
     },
     {
       accessorKey: 'lastLoginAt',
       header: 'Last Login',
-      cell: ({ row }) => new Date(row.original.lastLoginAt).toLocaleDateString(),
-      filterFn: 'weakEquals',
+      cell: ({ row }) => {
+        const lastLogin = row.original.lastLoginAt;
+        if (!lastLogin) {
+          return '';
+        }
+        const date = new Date(lastLogin);
+        const daysAgo = differenceInDays(new Date(), date);
+
+        //If in the last 3 days return '1 day ago'
+        if (daysAgo <= 3) {
+          return formatDistanceToNow(date, {
+            addSuffix: true,
+          });
+        }
+        //If 4 or more days just return date with the format 'June 26, 2024'
+        return format(date, 'MMM d, yyyy');
+      },
+      filterFn: 'dateBetween',
+      meta: {
+        filterVariant: 'date-range',
+      },
     },
     createDataTableRowActions<IUser>({
       cellRender: (user) => (

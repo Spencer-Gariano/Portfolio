@@ -1,6 +1,6 @@
 import { flexRender, type Table } from '@tanstack/react-table';
-import { Filter } from './DataFilter';
 import { ChevronUp, ChevronDown } from 'lucide-react';
+import { ColumnFilter } from './filters/ColumnFilter';
 
 export interface IDataTableHeaderProps<T> {
   table: Table<T>;
@@ -31,7 +31,7 @@ const DataTableHeader = <T,>(props: IDataTableHeaderProps<T>) => {
                   </div>
                   {header.column.getCanFilter() ? (
                     <div>
-                      <Filter column={header.column} />
+                      <ColumnFilter column={header.column} />
                     </div>
                   ) : null}
                 </>

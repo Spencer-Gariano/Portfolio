@@ -1,5 +1,5 @@
 import { type Column } from '@tanstack/react-table';
-import { DebouncedInput } from '../debounced-input/DebouncedInput';
+import { DebouncedInput } from '../../debounced-input/DebouncedInput';
 type FilterProps<TData> = {
   column: Column<TData, unknown>;
 };
