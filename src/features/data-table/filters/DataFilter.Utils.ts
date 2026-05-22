@@ -1,17 +1,39 @@
-import { sortingFns, type FilterFn, type Row } from '@tanstack/react-table';
+import { sortingFns, type FilterFn, type Row, type RowData } from '@tanstack/react-table';
 import { type RankingInfo, rankItem, compareItems } from '@tanstack/match-sorter-utils';
+import type { DateRange } from 'react-day-picker';
 declare module '@tanstack/react-table' {
   //add fuzzy filter to the filterFns
   interface FilterFns {
     fuzzy: FilterFn<unknown>;
+    dateBetween: FilterFn<unknown>;
   }
   interface FilterMeta {
     itemRank: RankingInfo;
   }
+  interface ColumnMeta<TData extends RowData, TValue> {
+    filterVariant?: FilterVariant;
+    [key: string]: unknown;
+  }
 }
+//Only implmented column filters are text and date-range at the moment
+export type FilterVariant = 'text' | 'number' | 'select' | 'multi-select' | 'date' | 'date-range';
+
+export interface IDateRangeFilter {
+  start?: Date;
+  end?: Date;
+}
+
 type FuzzyMeta = {
   itemRank: ReturnType<typeof rankItem>;
 };
+
+export const toDateRange = (filter?: IDateRangeFilter): DateRange => ({
+  from: filter?.start,
+  to: filter?.end,
+});
+
+export const fromDateRange = (range?: DateRange): IDateRangeFilter | undefined =>
+  range?.from || range?.to ? { start: range.from, end: range.to } : undefined;
 
 export const fuzzyFilter = <TData>(
   row: Row<TData>,
