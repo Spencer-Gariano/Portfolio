@@ -7,11 +7,10 @@ import path from 'path';
 export default defineConfig({
   plugins: [react(), tailwindcss()],
   server: {
-    host: 'local.spencergariano.io',
-    port: 5172,
-    https: {
-      key: '../certs/local.spencergariano.io-key.pem',
-      cert: '../certs/local.spencergariano.io.pem',
+    host: true,
+    hmr: {
+      host: 'local.spencergariano.io',
+      protocol: 'wss',
     },
   },
   resolve: {

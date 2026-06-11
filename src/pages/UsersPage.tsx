@@ -3,7 +3,7 @@ import { PageHeader } from './PageHeader';
 import { UserTable } from '@/features/user/components/UserTable';
 
 const UsersPage = () => {
-  const { users, areUsersLoading, onSubmitUser, onDeleteUser } = useUsers();
+  const { users, areUsersLoading, onSubmitUser, onDeleteUser } = useUsers('fullName', 'asc');
 
   return (
     <div className='space-y-8'>

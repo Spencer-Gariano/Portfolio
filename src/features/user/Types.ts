@@ -2,6 +2,9 @@ import * as z from 'zod';
 
 export type UserStatus = 'active' | 'pending';
 
+export type UserSort = 'firstName' | 'lastName' | 'fullName';
+export type OrderBy = 'asc' | 'desc';
+
 export interface IUser {
   id: string;
   firstName: string;
