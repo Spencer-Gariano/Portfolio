@@ -1,11 +1,9 @@
-export const apiFetch = async <T>(input: string, init?: RequestInit): Promise<T> => {
+export const httpClient = async <T>(input: string, init?: RequestInit): Promise<T> => {
   const response = await fetch(input, {
     headers: {
       'Content-Type': 'application/json',
-
       ...init?.headers,
     },
-
     ...init,
   });
 
