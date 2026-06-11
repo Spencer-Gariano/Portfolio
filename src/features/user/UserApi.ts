@@ -1,34 +1,29 @@
-import type { IUser, UserFormData } from './Types';
-import { mockUsers } from './Users.Mock';
+import { httpClient } from '@/lib/HttpClient';
+import type { IUser, OrderBy, UserFormData, UserSort } from './Types';
+import { api } from '@/lib/Api';
 
-export async function fetchUsers(): Promise<IUser[]> {
-  // simulate network delay (optional but useful early)
-  await new Promise((resolve) => setTimeout(resolve, 300));
+export async function fetchUsers(params?: { sort?: UserSort; order?: OrderBy }): Promise<IUser[]> {
+  const query = new URLSearchParams();
 
-  return mockUsers;
+  if (params?.sort) query.set('sort', params.sort);
+  if (params?.order) query.set('order', params.order);
+
+  const url = `${api.users.root()}${query.toString() ? `?${query}` : ''}`;
+
+  return httpClient<IUser[]>(url);
 }
 
 export async function createUser(user: UserFormData): Promise<IUser> {
-  await new Promise((resolve) => setTimeout(resolve, 300));
-  const timestamp = new Date().toISOString().replace(/\.\d{3}Z$/, 'Z');
-  return {
-    ...user,
-    id: (mockUsers.length + 1).toString(),
-    lastLoginAt: timestamp,
-    createdAt: timestamp,
-    status: 'pending',
-  } satisfies IUser;
+  return httpClient<IUser>(api.users.root(), { method: 'POST', body: JSON.stringify(user) });
 }
 
 export async function updateUser(updatedUser: UserFormData, currentUser: IUser): Promise<IUser> {
-  await new Promise((resolve) => setTimeout(resolve, 300));
-  return {
-    ...currentUser,
-    ...updatedUser,
-  } satisfies IUser;
+  return httpClient<IUser>(api.users.byId(currentUser.id), {
+    method: 'PUT',
+    body: JSON.stringify(updatedUser),
+  });
 }
 
 export async function deleteUser(user: IUser): Promise<string> {
-  await new Promise((resolve) => setTimeout(resolve, 300));
-  return user.id;
+  return httpClient<string>(api.users.byId(user.id), { method: 'DELETE' });
 }

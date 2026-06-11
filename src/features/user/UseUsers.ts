@@ -1,4 +1,4 @@
-import type { ISubmitUserProps, IUser } from './Types';
+import type { ISubmitUserProps, IUser, OrderBy, UserSort } from './Types';
 import { queryOptions, useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { UserQueryKeys } from './QueryKeys';
 import { createUser, deleteUser, fetchUsers, updateUser } from './UserApi';
@@ -11,13 +11,13 @@ export interface IUseUsersResponse {
   onDeleteUser: (data: IUser) => void;
 }
 
-export function useUsers(): IUseUsersResponse {
+export function useUsers(sort: UserSort = 'firstName', order: OrderBy = 'asc'): IUseUsersResponse {
   const queryClient = useQueryClient();
 
   const usersQueryOptions = queryOptions({
-    queryKey: [UserQueryKeys.GetUsers],
+    queryKey: [UserQueryKeys.GetUsers, sort, order],
     queryFn: async () => {
-      const data = await fetchUsers();
+      const data = await fetchUsers({ sort, order });
       return data;
     },
   });
