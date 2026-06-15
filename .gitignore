@@ -73,3 +73,10 @@ terraform.rc
 # Uncomment the line below if you want to ignore planout files.
 # planout
 ##################
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+.env*
+!.env.example
