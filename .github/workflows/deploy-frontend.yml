@@ -31,11 +31,8 @@ jobs:
           VITE_API_URL: ${{ vars.API_URL }}
 
       # Deploy to Cloudflare Pages
+      # Temporarily installs wrangler to deploy build to cloudflare
       - name: Deploy
-        uses: cloudflare/wrangler-action@v3
-        with:
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT }}
-          command: pages deploy dist --project-name=portfolio
-          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+        run: npx wrangler@4 pages deploy dist --project-name=portfolio --commit-dirty=true
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_TOKEN }}
