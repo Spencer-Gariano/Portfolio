@@ -2,7 +2,7 @@ import { Badge } from '@/components/ui/Badge';
 import { HighlightCard } from '@/features/highlight-card/HighlightCard';
 import { PageHeader } from './PageHeader';
 import { ExperienceTimeline } from '@/features/timeline/ExperienceTimeline';
-import type { IExperienceTimeline } from '@/features/timeline/types_tmp';
+import type { IExperienceTimeline } from '@/features/timeline/Types';
 
 const AboutPage = () => {
   const experiences: IExperienceTimeline[] = [

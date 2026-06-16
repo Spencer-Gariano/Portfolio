@@ -6,6 +6,7 @@ on:
 
 jobs:
   deploy:
+    environment: main
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -29,12 +30,11 @@ jobs:
         run: npm run build
         env:
           VITE_API_URL: ${{ vars.API_URL }}
+          VITE_API_TOKEN: ${{ vars.API_DEMO_TOKEN}}
 
       # Deploy to Cloudflare Pages
+      # Temporarily installs wrangler to deploy build to cloudflare
       - name: Deploy
-        uses: cloudflare/wrangler-action@v3
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT }}
-          command: pages deploy dist --project-name=portfolio
-          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+        run: npx wrangler@4 pages deploy dist --project-name=portfolio --commit-dirty=true
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_TOKEN }}
