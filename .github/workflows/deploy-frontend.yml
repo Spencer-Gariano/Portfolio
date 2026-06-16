@@ -30,6 +30,7 @@ jobs:
         run: npm run build
         env:
           VITE_API_URL: ${{ vars.API_URL }}
+          VITE_API_TOKEN: ${{ vars.API_DEMO_TOKEN}}
 
       # Deploy to Cloudflare Pages
       # Temporarily installs wrangler to deploy build to cloudflare
