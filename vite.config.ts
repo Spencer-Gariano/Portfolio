@@ -12,7 +12,7 @@ export default defineConfig({
   server: {
     host: true,
     hmr: {
-      host: 'local.spencergariano.io',
+      host: 'local.spencergariano.dev',
       protocol: 'wss',
     },
   },
