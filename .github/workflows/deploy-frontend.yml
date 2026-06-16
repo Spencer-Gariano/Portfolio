@@ -11,6 +11,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Verify Cloudflare token exists
+        run: |
+          if [ -z "$CLOUDFLARE_API_TOKEN" ]; then
+            echo "Token is EMPTY"
+            exit 1
+          else
+            echo "Token is PRESENT"
+          fi
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_TOKEN }}
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
