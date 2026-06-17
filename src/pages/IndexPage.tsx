@@ -27,7 +27,7 @@ const IndexPage = () => {
         <HighlightCard
           title={'TanStack Table Playground'}
           content={
-            'Interactive data grid exploring sorting, filtering, and column state management, with data sourced from a backend API and NoSQL database to simulate real-world server-driven table behavior.'
+            'Interactive data grid exploring sorting, filtering, and column state management, with data sourced from a backend API and SQL database to simulate real-world server-driven table behavior.'
           }
         />
         <HighlightCard
